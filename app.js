@@ -1,12 +1,15 @@
 'use strict';
+const memo = new Map();
+memo.set(0, 0);
+memo.set(1, 1);
+
 function fib(n) {
-	if (n === 0) {
-		return 0;
+	if (memo.has(n)) {
+		return memo.get(n);
 	}
-	if (n === 1) {
-		return 1;
-	}
-	return fib(n - 2) + fib(n - 1);
+	const calcuratedValue = fib(n - 2) + fib(n - 1);
+	memo.set(n ,calcuratedValue);
+	return calcuratedValue;
 }
 
 const length = 40;
